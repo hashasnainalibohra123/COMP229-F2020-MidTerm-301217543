@@ -29,7 +29,7 @@ router.get('/add', (req, res, next) => {
   //create object every times when you display the add page
   let books = book({
     });
-  res.render('books/details', {title: 'Add Book', books: books})    
+  res.render('books/details', {title: 'Add Book', books: books,messages:''})    
 });
 
 // POST process the Book Details page and create a new Book - CREATE
@@ -45,7 +45,7 @@ router.post('/add', (req, res, next) => {
       if(err)
       {
           console.log(err);
-          res.end(err);
+          res.render('books/details', {title: 'Add Book', books: books,messages: 'Form Validation Error:'+err.message})    
       }
       else
       {
@@ -70,7 +70,7 @@ router.get('/:id', (req, res, next) => {
       else
       {
           //show the edit view
-          res.render('books/details', {title: 'Edit Book Details', books: booksToEdit})
+          res.render('books/details', {title: 'Edit Book Details', books: booksToEdit,messages:''})
       }
   });
 });
@@ -92,7 +92,7 @@ router.post('/:id', (req, res, next) => {
       if(err)
       {
           console.log(err);
-          res.end(err);
+          res.render('books/details', {title: 'Edit Book Details', books: books,messages: 'Form Validation Error:'+err.message})    
       }
       else
       {

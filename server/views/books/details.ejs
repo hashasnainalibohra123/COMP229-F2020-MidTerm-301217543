@@ -5,15 +5,23 @@
       <div class="row">
         <div class="col-md-offset-3 col-md-6">
           <h1><%= title %></h1>
-            <form class="form" method="post">
+          <% if(messages.length> 0) {%>
+            <div class="alert alert-danger">
+                <%= messages %>
+            </div>
+            <% } %>
+            <form class="form needs-validation" method="post">
               <div class="form-group">
                 <label for="NameTextField">Title</label>
                 <input type="text" class="form-control" id="NameTextField"
                 placeholder="Book Name" name="title" value="<%= books.Title %>" required>
+                <div class="valid-feedback">
+                  Looks good!
+                </div>
               </div>
               <div class="form-group">
                 <label for="PriceTextField">Price</label>
-                <input type="text" class="form-control" id="PriceTextField"
+                <input type="number" class="form-control" id="PriceTextField"
                 placeholder="Book Price" name="price" value="<%= books.Price %>"  required>
               </div>
               <div class="form-group">
